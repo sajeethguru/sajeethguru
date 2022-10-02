@@ -1,4 +1,4 @@
 - 👋 Hi, I’m @sajeethguru
-- 👀 I’m interested in Programming , Web Application Developement and Cloud Computong
+- 👀 I’m interested in Programming , Web Application Developement and Cloud Computing
 - 🌱 I’m currently learning Electronics and Communication Engineering
 - 📫 Reach me through sajeethguru25@gmail.com
