@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Report</title>
+
+    <style>
+        body{
+            height: 100vh;
+            padding: 20px;
+        }
+        .container{
+            height: fit-content;
+            width:45%;
+            border: 2px solid  rgb(0, 0, 0);
+            border-radius: 12px;
+            margin: 75px auto;
+            padding: 10px;
+        }
+
+        .container h1{
+            text-align: center;
+            color: darkred;
+            margin-top: 5px;
+        }
+        .container label{
+            display:inline-block;
+            width: 30%;
+            font-size: 16px;
+            border-color: azure;
+        }
+        .container input,select{
+            display:inline-flex;
+            width: 60%;
+            padding: 5px;
+    
+        }
+        .container div{
+            margin:30px 30px;
+            color: green;
+            align-items: normal;
+        
+
+        }
+        .container #descrp{
+            height: fit-content;
+            width: 80%;
+            margin: 30px 30px;
+            padding: 37px;
+        }
+
+        button{
+            padding: 15px;
+            width: 75%;
+            margin-left: 15%;
+        }
+     
+    </style>
+    <style>
+       
+    </style>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+<body style="background-color: #fff;">
+    <section id="header" style="background: #f8bbbb;">
+        <a href="/home" id="logolink"><div id="logo">F2H</div></a>
+        <div id="nav">
+            <ul id="navbar">
+                <li class="fhomenav"><a  href="/fhome">Home</a></li>
+                <li class="fhomenav"><a href="/fpro">My Products</a></li>
+                <li class="fordernav"><a  href="/forder">Orders</a></li>
+                <li class="fpronav"><a  href="/fprofile">Profile</a></li>
+                <li class="flogout"><a href="/flogout">Logout</a></li>
+            </ul>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container">
+            <h1>Report Problem</h1>
+            <span style="text-align: center;">{{msg}}</span>
+            <div>
+                <form action="/frep" method="post">
+                    <div>
+                        <label for="username"> Username : </label>
+                        <input type="text" name="name" id="username" required>
+                    </div>
+                <div>
+                        <label for="phoneno">PhoneNo   : </label>
+                        <input type="text" name="ph" id="phoneno" required>
+                </div>
+                <div>
+                        <label for="problem">Select problem: </label>
+                        <select name="problem" required>
+                            <option value="Not working">App not Working</option>
+                            <option value="change feature">Change app feature</option>
+                            <option value="hostel not supporting">Problem on hostel</option>
+                            <option value="others">Other Problems</option>
+                        </select> 
+                </div>
+                <div>
+                    <label>Explanation:</label>
+                    <input placeholder="Explain the Problem in detail!" name="desc" type="text-area" id="descrp"  maxlength="250">
+                </div>
+                <div>
+                        <button type="submit" value="submit ">Submit</button>                
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

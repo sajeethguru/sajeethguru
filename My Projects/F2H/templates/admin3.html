@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Approval</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        body{
+            height: 100vh;
+            background-color: #fff;
+            padding: 0px;
+        }
+        .mpro{
+            padding: 25px;
+            margin-top: 4%;
+			box-shadow: 0px 0px 2px #888888;
+			width: auto;
+			flex-basis: 75%;
+            height: 100%;
+            
+			text-align: center;
+            background-color: #fff;
+        }
+        .mpro .title{
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+        }
+        table {
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        th, td {
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        }
+
+        th {
+        background-color: #f2f2f2;
+        color: #333;
+        }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="/hhome" id="logolink"><div id="logo">F2H</div></a>
+        <div id="nav">
+            <ul id="navbar">
+                <li><a href="/afarmer">Farmer</a></li>
+                <li><a href="/ahostel">Hostel</a></li>
+                <li><a class="active" href="/faccess">Farmers Applications</a></li>
+                <li><a href="/haccess">Hostels Applications</a></li>
+                <li><a href="/reports">Reports</a></li>
+                <li><a href="/rhistory">Report History</a></li>
+                <li><a href="/fraccounts">Freezed Accounts</a></li>
+                <li><a href="/alogout">Logout</a></li>
+            </ul>
+        </div>
+    </section>
+    <div class="mpro">
+        <div class="title">Approval for Farmers</div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Farmer Id</td>
+                        <td>Name</td>
+                        <td>Mobile Number</td>
+                        <td>Email</td>
+                        <td>Location</td>
+                        <td>Address</td>
+                        <td>Status</td>
+                        <td>Grant Access</td>
+                        <td>Deny Access</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in farmer%}
+                    <tr>
+                        <td><span>{{i.FID}}</span></td>
+                        <td><span>{{(i.FNAME)}}</span></td>
+                        <td><span>{{i.FPHONE}} </span></td>
+                        <td><span>{{i.FMAIL}}</span></td>
+                        <td><span>{{i.FLOCATION}}</span></td>
+                        <td><span>{{i.FADDRESS}}</span></td>
+                        <td><span>{{i.STATUS}}</span></td>
+                        <td><a href="/fgrant/{{i.FID}}"><button>Verified</button></a></td>
+                        <td><a href="/fdeny/{{i.FID}}"><button>Deny</button></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>

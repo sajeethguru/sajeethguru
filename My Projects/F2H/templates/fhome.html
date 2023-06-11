@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Farmer!</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        button{
+            background: transparent;
+            background-color: rgb(76, 208, 76);
+            border-radius: 25px;
+            border: 0;
+            padding: 20px 20px 20px 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .greeting{
+            width: 100%;
+            text-align: center;
+            height: 150px;
+            margin-top: 0%;
+        }
+        .container {
+            width: 100%;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+        .styl_box {
+            margin: 0 auto;
+            padding: 0;
+            background-blend-mode: overlay;
+            border-radius: 40px;
+            max-width: 300px;
+            width: 100%;
+        }
+        .single_analize__block {
+            color: #ffffff;
+            padding: 40px 25px;
+        }
+        .single_analize__block h2 {
+            color: #cec21a;
+            font-size: 24px;
+        }
+        .single_analize__block p{
+            color: #fff;
+            font-size: 15px;
+        }
+        h2 {
+            font-size: 34px;
+            font-weight: 700;
+            margin-top: 0;
+            font-family: 'Raleway', sans-serif;
+            color: #6cbe03;
+            text-transform: capitalize;
+        }
+        .text-center {
+            text-align: center!important;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        p {
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+        }
+    </style>
+</head>
+<body >
+    <section id="header">
+        <a href="/fhome" id="logolink"><div id="logo">F2H</div></a>
+        <input type="checkbox" name="" id="toggle">
+        <label for="toggle"><i class="material-icon">menu</i></label>
+        <div id="nav">
+            <ul id="navbar">
+                <li class="fhomenav"><a class="active" href="/fhome">Home</a></li>
+                <li class="fhomenav"><a href="/fpro">My Products</a></li>
+                <li class="fordernav"><a href="/forder">Orders</a></li>
+                <li class="fpronav"><a href="/fprofile">Profile</a></li>
+                <li class="flogout"><a href="/flogout">Logout</a></li>
+            </ul>
+        </div>
+    </section>
+    <section id="hero" style="justify-content: center;">
+        <div class="greeting">
+            <h2>Welcome to F2H!</h2>
+            <p>Lets Care and Share your Healthy Products</p>
+            <p>Tranportation fees should should be collected according to <a href="/tfee" target="_blank">this Table</a></p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="styl_box" style=" background: rgba(0, 0, 0, 0.65) url(../static/iimg/pexels-photo-760281.jpeg);background-size: cover;">
+                    <div class="single_analize__block text-center">
+                        <h2>Upload & Update</h2>
+                        <p>
+                            keep your product's price and current available quantity updated. upload your new products by filling the form in My Product section. also view and remove your products which are shown in the table.
+                        </p>
+                        <a href="/fpro" class="btn-text btn_new" style="color:#6cbe03">My Products</a>
+                    </div>
+                </div>
+                <div class="styl_box dubble_bg" style=" background: rgba(0, 0, 0, 0.65) url(../static/iimg/farmer.jpg);background-size: cover;">
+                    <div class="single_analize__block text-center">
+                        <h2>Look for Orders</h2>
+                        <p>
+                            keep looking for orders and deliver them as soon as possible. after delivering the order click the 'delivered' button. keep checking your sms to not avoiding any order.   
+                        </p>
+                        <a href="/forder" class="btn-text btn_new" style="color:#6cbe03">Orders</a>
+                    </div>
+                </div>
+                <div class="styl_box">
+                    <div class="styl_box single_analize__block text-center"  style=" background: rgba(0, 0, 0, 0.65) url(../static/iimg/happily-young-farmer-harvests-rice-field-talking-with-smartphone.jpg);background-size: cover;">
+                        <h2>Connect with Admins</h2>
+                        <p>
+                            Be connected with the admins and utilize this app efficiently. Leave your doubts and complains to the admins by filling the form that's available in the Contact Admin section.
+                        </p>
+                        <a href="/fadmin" class="btn-text btn_new" style="color:#6cbe03">Contact Admin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

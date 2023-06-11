@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+        }
+
+        .pro{
+            display:flex;
+            flex-wrap: wrap;
+            width: 100%;
+            justify-content: center;
+        }
+
+        section{
+            display: inline;
+        }
+
+        .shop{
+            margin: 0 auto;
+            width: 100%;
+            padding: 60px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        /* Center the title and add some margin */
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Style the forms */
+        form {
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],select {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+            width: 250px;
+        }
+
+        button[type="submit"] {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            border: 1px solid ;
+            padding: 20px;
+            border-radius: 3px;
+            width: 300px;
+            height: 420px;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: 200px;
+            margin-bottom: 10px;
+            flex: 50;
+        }
+        .product .des{
+            flex: 50;
+        }
+
+        .product h3 {
+            margin: 0;
+            color: #dd1515
+        }
+
+        .product p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .h1{
+            display: block;
+            font-size: 2em;
+            margin-block-start: 0.67em;
+            margin-block-end: 0.67em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+        }
+        #bottom {  
+            border: black;  
+            border-top:2px solid black;
+            place-content: center;
+            padding: 10px;;
+        }
+        .stars span{
+            color: gold;
+        }
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+</head>
+<body>
+    <section id="header">
+        <a href="/hhome" id="logolink"><div id="logo">F2H</div></a>
+        <div id="nav">
+            <ul id="navbar">
+                <li class="fhomenav"><a  href="/hhome">Home</a></li>
+                <li class="hshopnav"><a class="active" href="/hshop">Shop</a></li>
+                <li class="hordersnav"><a href="/horder">My Orders</a></li>
+                <li class="hpronav"><a href="/hprofile">Profile</a></li>
+                <li class="flogout"><a href="/hlogout">Logout</a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="shop">
+        <h1 class="h1">Shopping Page</h1>
+        <form action="/psearch" method="POST">
+            <label for="search">Search:</label>
+			<select class="select" name="pname" required>
+                <option value="Tomato/தக்காளி">Tomato/தக்காளி</option>
+                <option value="Potato/உருளைக்கிழங்கு">Potato/உருளைக்கிழங்கு</option>
+                <option value="Onion/வெங்காயம்">Onion/வெங்காயம்</option>
+                <option value="Drumstick/முருங்கைக்காய்">Drumstick/முருங்கைக்காய்</option>
+                <option value="Radish/முள்ளங்கி">Radish/முள்ளங்கி</option>
+                <option value="Raw Mango/மாங்காய்">Raw Mango/மாங்காய்</option>
+                <option value="Cabbage/முட்டைக்கோஸ்">Cabbage/முட்டைக்கோஸ்</option>
+                <option value="Green Chilli/பச்சை மிளகாய்">Green Chilli/பச்சை மிளகாய்</option>
+                <option value="Red Chilli/சிவப்பு மிளகாய்">Red Chilli/சிவப்பு மிளகாய்</option>
+                <option value="Bumpkin/பூசணிக்காய்">Bumpkin/பூசணிக்காய்</option>
+                <option value="Beetroot/பீட்ரூட்">Beetroot/பீட்ரூட்</option>
+                <option value="Coriander/கொத்தமல்லி">Coriander/கொத்தமல்லி</option>
+                <option value="CurryLeaves/கறிவேப்பிலை">CurryLeaves/கறிவேப்பிலை</option>
+                <option value="Ladies Finger/வெண்டைக்காய்">Ladies Finger/வெண்டைக்காய்</option>
+                <option value="Coconut/தேங்காய்">Coconut/தேங்காய்</option>
+                <option value="Brinjal/கத்தரிக்காய்">Brinjal/கத்தரிக்காய்</option>
+                <option value="Bitter Gourd/பாகற்காய்">Bitter Gourd/பாகற்காய்</option>
+                <option value="Cucumber/வெள்ளரிக்காய்">Cucumber/வெள்ளரிக்காய்</option>
+                <option value="Black Gram/உளுந்து">Black Gram/உளுந்து</option>
+                <option value="Chickpea/கொண்டைக்கடலை">Chickpea/கொண்டைக்கடலை</option>
+                <option value="Beans/ பீன்ஸ்">Beans/ பீன்ஸ்</option>
+                <option value="Onion Small/சின்ன வெங்காயம்">Onion Small/சின்ன வெங்காயம்</option>
+                <option value="Raw Banana/வாழைக்காய்">Raw Banana/வாழைக்காய்</option>
+                <option value="Rice/அரிசி">Rice/அரிசி </option>
+            </select>
+            <label>Grade</label>
+            <select name="grade" class="select" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <label>Price</label>
+            <select name="price" id="select" required>
+                <option value="High to Low">High to Low</option>
+                <option value="Low to High">Low to High</option>
+            </select>
+			<button type="submit">Search</button>
+        </form>
+        <div class="location-filter">
+            <form action="/pfilter" method="POST">
+                <label for="location">Location:</label>
+                <select id="location" name="location">
+                        <option value="">{{hloc}}</option> 
+                        {% for k in loc %}
+                        <option value="{{k.FLOCATION}}">{{k.FLOCATION}}</option>
+                        {% endfor %}
+                </select>
+                <button type="submit">Filter</button>
+            </form>
+        </div>
+        <div class="pro">
+        {% for i in pro %}
+            <div class="product-list">
+                <a href="/shop/{{i.PID}}"><div class="product">
+                    <img src="https://s3.jp-tok.cloud-object-storage.appdomain.cloud/pimages/{{i.INAME}}">
+                    <div class="des">
+                        <h3>{{i.PNAME}}</h3>
+                        <p>Grade&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:{{i.GRADE}} </p>
+                        <p>Price per kg &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp :{{i.PRICE}} Rs</p>
+                        <p>Available Quantity:{{i.PQUANTITY}} kg</p>
+                        <div class="stars">
+                            {% for j in range(5) %}
+                              {% if j < i.rate %}
+                                <span class="selected">&#9733;</span>
+                              {% else %}
+                                <span>&#9734;</span>
+                              {% endif %}
+                            {% endfor %}
+                            ({{i.NORATE}})
+                          </div>
+                        <p>Sold By&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp :{{i.FNAME}}</p>    
+                        <p>Location&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:{{i.FLOCATION}}</p>
+
+                    </div>
+                </div></a>
+            </div>
+        {% endfor %}
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        body{
+            height: 100vh;
+            background-color: #fff;
+            padding: 0px;
+        }
+        .mpro{
+            padding: 25px;
+            margin-top: 4%;
+			box-shadow: 0px 0px 2px #888888;
+			width: auto;
+			flex-basis: 75%;
+            height: 100%;
+            
+			text-align: center;
+            background-color: #fff;
+        }
+        .mpro .title{
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+        }
+        table {
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        th, td {
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        }
+
+        th {
+        background-color: #f2f2f2;
+        color: #333;
+        }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="/home" id="logolink"><div id="logo">F2H</div></a>
+        <div id="nav">
+            <ul id="navbar">
+                <li class="fhomenav"><a  href="/fhome">Home</a></li>
+                <li class="fhomenav"><a href="/fpro">My Products</a></li>
+                <li class="fordernav"><a class="active" href="/forder">Orders</a></li>
+                <li class="fpronav"><a  href="/fprofile">Profile</a></li>
+                <li class="flogout"><a href="/flogout">Logout</a></li>
+            </ul>
+        </div>
+    </section>
+    <div class="mpro">
+        <div class="title">Your Orders</div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Order Id</td>
+                        <td>Name</td>
+                        <td>Ordered Quantity<br>(in kgs)</td>
+                        <td>Total Price</td>
+                        <td>Hostel Name</td>
+                        <td>Hostel's Contact No</td>
+                        <td>Hostel Address</td>
+                        <td>Status</td>
+                        <td>Order Confirmaion</td>
+                        <td>Delivery Status</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in order%}
+                    <tr>
+                        <td><span>{{i.OID}}</span></td>
+                        <td><span>{{(i.NAME)}}</span></td>
+                        <td><span>{{i.OQUANTITY}} </span></td>
+                        <td><span>{{i.PRICE}}</span></td>
+                        <td><span>{{i.HNAME}}</span></td>
+                        <td><span>{{i.HPH}}</span></td>
+                        <td><span>{{i.HADD}}</span></td>
+                        <td><span>{{i.STATUS}}</span></td>
+                        {% if i.STATUS == "Yet to deliver" %}
+                        <td><a href="/confirmorder/{{i.OID}}"><button>Confirm</button></a></td>
+                        {% else %}
+                        <td><span>Order Confirmed!</span></td>
+                        {% endif %}
+                        {% if i.STATUS == "Confirmed by Farmer" %}
+                        <td><a href="/fconfirm/{{i.OID}}"><button>Delivered</button></a></td>
+                        {% else %}
+                        <td><span>Please Confirm the Order!</span></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br><br>
+        <div class="title">Order History</div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Order Id</td>
+                        <td>Name</td>
+                        <td>Ordered Quantity<br>(in kgs)</td>
+                        <td>Total Price</td>
+                        <td>Hostel Name</td>
+                        <td>Hostel's Contact No</td>
+                        <td>Hostel Address</td>
+                        <td>Status</td>
+                        <td>Date and Time</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for j in orderh%}
+                    <tr>
+                        <td><span>{{j.OID}}</span></td>
+                        <td><span>{{(j.NAME)}}</span></td>
+                        <td><span>{{j.OQUANTITY}} </span></td>
+                        <td><span>{{j.PRICE}}</span></td>
+                        <td><span>{{j.HNAME}}</span></td>
+                        <td><span>{{j.HPH}}</span></td>
+                        <td><span>{{j.HADD}}</span></td>
+                        <td><span>{{j.STATUS}}</span></td>
+                        <td><span>{{j.TIME}}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        body{
+        font-family: 'Roboto Condensed', sans-serif;
+        height: 100%;
+        }
+        .container{
+        width: 100%;
+        height: 100%;
+        }
+        .d-flex{
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        background: #f6f6f6;
+        border-radius: 0 0 5px 5px;
+        padding: 25px;
+        }
+        .hf{
+        flex: 4;
+        border: 1px solid #dadada;
+        display: flex;
+        flex-direction: column;
+        height: 530px;
+        padding-left: 40px;
+        padding-right: 40px;
+        }
+        .hf h2{
+            padding:30px;
+            text-align: center;
+            font-size: 30px;
+            color: black;
+            font-weight: 600;
+        }
+
+        .form label .fspace{
+            display: flex;
+            align-items: baseline;
+        }
+
+        .Yorder{
+        flex: 2;
+        }
+        h2,#vr{
+        margin: 0;
+        padding-left: 15px; 
+        }
+        .required{
+        color: red;
+        }
+        label, table{
+        display: block;
+        margin: 15px;
+        }
+        label span{
+        float: left;
+        width: 25%;
+        margin-top: 12px;
+        padding-right: 10px;
+        }
+        .h{
+        width: 70%;
+        height: 30px;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        border: 1px solid #dadada;
+        color: #888;
+        }
+        select{
+        width: 72%;
+        height: 45px;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        }
+        .Yorder{
+        height: 530px;
+        padding: 20px;
+        border: 1px solid #dadada;
+        }
+        table{
+        margin: 0;
+        padding: 0;
+        }
+        th{
+        border-bottom: 1px solid #dadada;
+        padding: 10px 0;
+        }
+        tr td:nth-child(1){
+        text-align: left;
+        color: #2d2d2a;
+        }
+        tr td:nth-child(2){
+        text-align: right;
+        color: #52ad9c;
+        }
+        td{
+        border-bottom: 1px solid #dadada;
+        padding: 25px 25px 25px 0;
+        }
+
+        p{
+        display: block;
+        color: #888;
+        margin: 0;
+        padding-left: 25px;
+        }
+        .Yorder div{
+        padding: 15px 0; 
+        }
+
+        button{
+        width: 100%;
+        margin-top: 10px;
+        padding: 10px;
+        border: none;
+        border-radius: 30px;
+        background: #52ad9c;
+        color: #fff;
+        font-size: 15px;
+        font-weight: bold;
+        }
+        button:hover{
+        cursor: pointer;
+        background: #428a7d;
+        }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="/hhome" id="logolink"><div id="logo">F2H</div></a>
+        <div id="nav">
+            <ul id="navbar">
+                <li class="fhomenav"><a  href="/hhome">Home</a></li>
+                <li class="hshopnav"><a href="/hshop">Shop</a></li>
+                <li class="hordersnav"><a class="active" href="/horder">My Orders</a></li>
+                <li class="hpronav"><a href="/hprofile">Profile</a></li>
+                <li class="flogout"><a href="/hlogout">Logout</a></li>
+            </ul>
+        </div>
+    </section>
+    <div class="container">
+        <div class="d-flex">
+            <div class="hf">
+                <div class="title">
+                    <h2>Confirm Your Purchase</h2>
+                </div>
+                <div class="form">
+                    <span id="vr">Verify your details! </span>
+                    <label>
+                        <div class="fspace">
+                            <span class="hname">Hostel Name</span>
+                            <span class="h">{{hname}}</span>
+                        </div>
+                    </label>                        
+                    <label>
+                        <div class="fspace">
+                            <span>Phone </span>
+                            <span class="h">{{hphone}}</span>
+                        </div>
+                    </label>
+                    <label>
+                        <div class="fspace">
+                            <span>Email Address</span>
+                            <span class="h">{{hmail}}</span>
+                        </div>
+                    </label>
+                    <label>
+                        <div class="fspace">
+                            <span>Hostel Address</span>
+                            <span class="h"><p>{{ address}}</p></span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="Yorder">
+                <table>
+                    <tr>
+                    <th colspan="2">Your order</th>
+                    </tr>
+                    <tr>
+                    <td>Product</td>
+                    <td>{{pname}} x {{oq}}(Qty)</td>
+                    </tr>
+                    <tr>
+                    <td>Subtotal</td>
+                    <td>{{tp}}</td>
+                    </tr>
+                    <tr>
+                    <td>Transportation Fees</td>
+                    <td><a href="/tfee" target="_blank"><button>FEE</button></a></td>
+                    </tr>
+                </table><br>
+                <div>
+                    <input type="radio" name="dbt" value="dbt" > Direct Bank Transfer
+                </div>
+                <p>
+                    Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+                </p>
+                <div>
+                    <input type="radio" name="dbt" value="cd" checked> Cash on Delivery
+                </div>
+                <div>
+                    <input type="radio" name="dbt" value="cd"> <span>UPI </span>
+                </div>
+                <a href="/pbuy?arg1={{pid}}&arg2={{oq}}"><button type="button">Place Order</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

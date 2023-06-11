@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F2H Login</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			background-color: transparent;
+			margin: 8% auto;
+			max-width: 80%;
+			height: 100%;
+			align-items: center;
+			padding: 20px;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.form {
+            border-radius: 10px;
+            padding: 20px;
+			box-shadow: 0px 0px 10px #888888;
+			width: 100%;
+			flex-basis: 45%;
+			text-align: center;
+			background-color: #2b2121bd;
+		}
+
+		h1 {
+			color: #9dff00;
+			font-size: 30px;
+			margin-bottom: 30px;
+		}
+
+		label {
+			display: block;
+			font-size: 14px;
+			font-weight: bold;
+			margin-bottom: 5px;
+			text-align: left;
+			color: aliceblue;
+		}
+
+		input[type="text"], input[type="password"],input[type="email"], #hostel-email{
+			border-radius: 5px;
+			border-left: 0;
+            border-top: 0;
+            border-right: 0;
+            border-bottom: 1px solid #999;
+            background: transparent;
+			box-sizing: border-box;
+			font-size: 14px;
+			margin-bottom: 20px;
+			padding: 10px;
+			width: 100%;
+			color:#9dff00;
+			font-weight: 600;
+		}
+
+		input[type="submit"] {
+			background-color: #9dff00;
+			border: none;
+			border-radius: 5px;
+			color: #140000;
+			font-weight: 700;
+			cursor: pointer;
+			font-size: 16px;
+			padding: 10px;
+			width: 100%;
+		}
+
+		.register-link {
+			display: block;
+			margin-top: 20px;
+			text-align: center;
+		}
+
+		.register-link a {
+			color: aliceblue;
+			font-size: 14px;
+			text-decoration: none;
+		}
+
+		.register-link a:hover {
+			text-decoration: underline;
+		}
+        span{
+            display: block;
+            color: #a6ffd8;
+			font-size: 14px;
+			margin-bottom: 5px;
+			text-align: left;
+        }
+	</style>
+</head>
+<body>
+	<main class="pic">
+    <section id="header">
+        <a href="/home" id="logolink"><div id="logo">F2H</div></a>
+        <div id="nav">
+            <ul id="navbar">
+                <li class="homenav"><a class="active" href="/">Login</a></li>
+                <li class="adminnav"><a href="/alogin">Admin</a></li>
+
+            </ul>
+        </div>
+    </section>
+    <section id="hero">
+        <div class="container">
+            <form action="/flogin" method="post" class="form">
+                <h1>Login as Farmer</h1>
+                <span>{{msg1}}</span>
+                <label for="farmer-name">Email</label>
+                <input type="email" id="farmer-name" name="fmail" required>
+    
+                <label for="farmer-password">Password</label>
+                <input type="password" id="farmer-password" name="fpass" required>
+    
+                <input type="submit" value="Login as Farmer">
+    
+                <div class="register-link">
+                    <a href="/freg">Don't have an account? Register as a Farmer</a>
+                </div>
+            </form>
+    
+            <form action="/hlogin" method="post" class="form">
+                <h1>Login as Hostel</h1>
+                <span>{{msg2}}</span>
+                <label for="hostel-email">Email</label>
+                <input type="email" id="hostel-email" name="hemail" required>
+    
+                <label for="hostel-password">Password</label>
+                <input type="password" id="hostel-password" name="hpass" required>
+    
+                <input type="submit" value="Login as Hostel">
+
+                <div class="register-link">
+                    <a href="/hreg">Don't have an account? Register as a Hostel</a>
+                </div>
+			</form>
+    </section>
+	</main>
+</body>
+</html>

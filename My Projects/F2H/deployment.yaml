@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: f2h
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: f2h
+  template:
+    metadata:
+      labels:
+        app: f2h
+    spec:
+      containers:
+      - name: f2h
+        image: au.icr.io/name/repo
+	imagePullPolicy: Always
+	ports:
+        - containerPort: 5000

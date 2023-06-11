@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate The Product</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+      
+      .star {
+        cursor: pointer;
+        padding: 5px;
+        font-size: 36px;
+        }
+
+        .star:before {
+        content: "\2606";
+        }
+
+        .star.selected:before {
+        content: "\2605";
+        color: gold;
+        }
+
+        .modal {
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .outer{
+        background-color: #fefefe;
+        margin: 20% auto;
+        padding: 30px;
+        border: 1px solid #888;
+        width: 50%;
+        text-align: center;
+        box-shadow: 0px 0px 10px #888888;
+        border-radius: 30px;
+        }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="/hhome" id="logolink"><div id="logo">F2H</div></a>
+        <div id="nav">
+            <ul id="navbar">
+                <li class="fhomenav"><a  href="/hhome">Home</a></li>
+                <li class="hshopnav"><a  href="/hshop">Shop</a></li>
+                <li class="hordersnav"><a class="active" href="/horder">My Orders</a></li>
+                <li class="hpronav"><a href="/hprofile">Profile</a></li>
+                <li class="flogout"><a href="/hlogout">Logout</a></li>
+            </ul>
+        </div>
+    </section>
+    <section>
+      <div class="modal">
+        <div class='outer'>
+            <h1>Rate the product</h1>
+            <div class="rating" >
+                <span class="star" data-rating="1"></span>
+                <span class="star" data-rating="2"></span>
+                <span class="star" data-rating="3"></span>
+                <span class="star" data-rating="4"></span>
+                <span class="star" data-rating="5"></span>
+            </div>
+            <div>
+                <button id="submit-btn" name="{{oid}}">Submit</button>
+            </div>       
+        </div>
+    </div>
+    </section>
+    <script>
+      const stars = document.querySelectorAll(".star");
+      const submitBtn = document.querySelector("#submit-btn");
+      let rating = 0;
+      let id = document.getElementById("submit-btn").name;;
+      stars.forEach(star => {
+      star.addEventListener("click", function() {
+          rating = this.dataset.rating;
+          fillStars(rating);
+      });
+      });
+
+      submitBtn.addEventListener("click", function() {
+      if (rating > 0) {
+          
+          const url = "/rate?rating=" + rating +"&oid=" + id ;
+          alert(`You rated ${rating} stars.`);
+          window.location.href = url;
+              
+      } else {
+          alert("Please select a rating.");
+      }
+      });
+
+      function fillStars(num) {
+      for (let i = 0; i < stars.length; i++) {
+          if (i < num) {
+          stars[i].classList.add("selected");
+          } else {
+          stars[i].classList.remove("selected");
+          }
+      }
+      }
+
+    </script>
+</body>
+</html>

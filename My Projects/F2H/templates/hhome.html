@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        button{
+            background: transparent;
+            background-color: rgb(76, 208, 76);
+            border-radius: 25px;
+            border: 0;
+            padding: 20px 20px 20px 20px;
+            cursor: pointer;
+            width: 150px;
+            font-weight: bold;
+        }
+        
+        #greeting{
+            width: 100%;
+            text-align: center;
+            height: 150px;
+            margin-top: 0%;
+        }
+        .container {
+            width: 100%;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+        .styl_box {
+            margin: 0 auto;
+            padding: 0;
+            background-blend-mode: overlay;
+            border-radius: 40px;
+            max-width: 300px;
+            width: 100%;
+        }
+        .single_analize__block {
+            color: #ffffff;
+            padding: 40px 25px;
+        }
+        .single_analize__block h2 {
+            color: #cec21a;
+            font-size: 24px;
+        }
+        .single_analize__block p{
+            color: #fff;
+            font-size: 15px;
+        }
+        h2 {
+            font-size: 34px;
+            font-weight: 700;
+            margin-top: 0;
+            font-family: 'Raleway', sans-serif;
+            color: #6cbe03;
+            text-transform: capitalize;
+        }
+        .text-center {
+            text-align: center!important;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        p {
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+        }
+    </style>
+</head>
+<body>
+    <section id="header">
+        <a href="/hhome" id="logolink"><div id="logo">F2H</div></a>
+        <div id="nav">
+            <ul id="navbar">
+                <li class="fhomenav"><a class="active" href="/hhome">Home</a></li>
+                <li class="hshopnav"><a href="/hshop">Shop</a></li>
+                <li class="hordersnav"><a href="/horder">My Orders</a></li>
+                <li class="hpronav"><a href="/hprofile">Profile</a></li>
+                <li class="flogout"><a href="/hlogout">Logout</a></li>
+            </ul>
+        </div>
+    </section> 
+    <section id="hero" style="justify-content: center;">
+        <div id="greeting">
+            <h2>Welcome to F2H!</h2>
+            <p>Buy fresh products directly from local farmers here</p>
+            <p>Check Current Market Price <a href="https://vegetablemarketprice.com/market/tamilNadu/today" target="_blank">here</a></p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="styl_box" style=" background: rgba(0, 0, 0, 0.65) url(../static/iimg/pexels-photo-760281.jpeg);background-size: cover;">
+                    <div class="single_analize__block text-center">
+                        <h2>Buy Fresh Products</h2>
+                        <p>
+                            Buy local and fresh products form the shop section. use the location filter to select product from that particular location. the transportation fees shown should be given in addition to the total fees!
+                        </p>
+                        <a href="/hshop" class="btn-text btn_new" style="color:#6cbe03">Shop</a>
+                    </div>
+                </div>
+                <div class="styl_box dubble_bg" style=" background: rgba(0, 0, 0, 0.65) url(../static/iimg/farmer.jpg);background-size: cover;">
+                    <div class="single_analize__block text-center">
+                        <h2>View your Orders</h2>
+                        <p>
+                            View the orders you made and status of your order in the My Orders Section. when the order is recieved pay the payment along with the transport fee mentioned!<br> Don't Forget to rate the product!! 
+                        </p>
+                        <a href="/horder" class="btn-text btn_new" style="color:#6cbe03">My Orders</a>
+                    </div>
+                </div>
+                <div class="styl_box">
+                    <div class="styl_box single_analize__block text-center"  style=" background: rgba(0, 0, 0, 0.65) url(../static/iimg/happily-young-farmer-harvests-rice-field-talking-with-smartphone.jpg);background-size: cover;">
+                        <h2>Connect with Admins</h2>
+                        <p>
+                            Be connected with the admins and utilize this app efficiently. Leave your doubts and complains to the admins by filling the form that's available in the Contact Admin section.
+                        </p>
+                        <a href="/hadmin" class="btn-text btn_new" style="color:#6cbe03">Contact Admin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<footer>
+    &copy;F2H
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Products</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding: 0px;
+        }
+        #upt{
+            background-color: transparent;
+			margin: 0;
+			width: 100%;
+            height: 100%;
+			display: flex;
+			flex-direction: row-reverse;
+        }
+        .container{
+            padding: 25px;
+			box-shadow: 0px 0px 2px #888888;
+			width: auto;
+            margin-top: 4%;
+            height: 100%;
+			flex-basis: 25%;
+			text-align: center;
+            background-color: #fff;
+        }
+        .mpro{
+            padding: 25px;
+            margin-top: 4%;
+			box-shadow: 0px 0px 2px #888888;
+			width: auto;
+			flex-basis: 75%;
+            height: 100%;
+			text-align: center;
+            background-color: #fff;
+        }
+        .container .title{
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .mpro .title{
+            font-size: 25px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .container .title::before{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        
+        .content form .user-details{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: 20px 0 12px 0;
+        }
+        form .user-details .input-box{
+            margin-bottom: 15px;
+            
+        }
+        form .input-box span.details{
+            display: block;
+            font-weight: 500;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+        .user-details .input-box input, .select{
+            height: 45px;
+            width: 100%;
+            outline: none;
+            font-size: 16px;
+            border-radius: 5px;
+            padding-left: 15px;
+            border: 1px solid #ccc;
+            border-bottom-width: 2px;
+            transition: all 0.3s ease;
+        }
+        .user-details .input-box input:focus,
+        .user-details .input-box input:valid{
+            border-color: #9b59b6;
+        }
+        form .category{
+            display: flex;
+            width: 80%;
+            margin: 14px 0 ;
+            justify-content: space-between;
+        }
+        form .category label{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        form .category label .dot{
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            margin-right: 10px;
+            background: #d9d9d9;
+            border: 5px solid transparent;
+            transition: all 0.3s ease;
+        }
+        form .button{
+            height: 45px;
+            margin: 15px 0;
+            width: 45%
+        }
+        form .button input{
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            color: #000000;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #e3a3a3;
+        }
+        form .button input:hover{
+        /* transform: scale(0.99); */
+            background: green;
+        }
+        .msg{
+            color:#df0707;
+        }
+        .dmsg{
+            text-align:start;
+            padding:10px;
+        }
+
+
+        @media(max-width: 900px){
+        .container{
+        max-width: 100%;
+        }
+        form .user-details .input-box{
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        form .category{
+            width: 100%;
+        }
+        .content form .user-details{
+            max-height: 400px;
+        }
+        .user-details::-webkit-scrollbar{
+            width: 5px;
+        }
+        #upt{
+            flex-direction: column;
+        }
+        }
+        @media(max-width: 459px){
+        .container .content .category{
+            flex-direction: column;
+        }
+        
+        }
+        /* CSS code for the table */
+        table {
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        }
+
+        th {
+        background-color: #f2f2f2;
+        color: #333;
+        }
+
+    </style>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+<body style="background-color: #fff;">
+    <section id="header" style="background: #f8bbbb;">
+        <a href="/home" id="logolink"><div id="logo">F2H</div></a>
+        <div id="nav">
+            <ul id="navbar">
+                <li class="fhomenav"><a  href="/fhome">Home</a></li>
+                <li class="fhomenav"><a class="active" href="/fpro">My Products</a></li>
+                <li class="fordernav"><a  href="/forder">Orders</a></li>
+                <li class="fpronav"><a  href="/fprofile">Profile</a></li>
+                <li class="flogout"><a href="/flogout">Logout</a></li>
+            </ul>
+        </div>
+    </section>
+    <section id="upt">
+        <div class="mpro">
+            <div class="title">Your Products</div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Quantity(in kgs)</td>
+                        <td>Grade</td>
+                        <td>Price per kg</td>
+                        <td>Product Rating</td>
+                        <td>Remove</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in pro%}
+                    <tr>
+                        <td><span>{{i.PNAME}}</span></td>
+                        <td><span>{{(i.PQUANTITY)}}</span></td>
+                        <td><span>{{i.GRADE}}</span></td>
+                        <td><span>{{i.PRICE}} </span></td>
+                        <td><span>{{i.RATING}}</span></td>
+                        <td><a href="/remove/{{i.PID}}"><i class='fas fa-trash-alt' style='font-size:24px'><button>Remove</button></i></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+        <div class="container">
+            <div class="title">Upload or Update Product</div>
+            <div class="dmsg">
+                <span class="msg">{{msg}}</span></div>
+            <div class="content">
+              
+              <form action="/proupt" method="post">
+                <div class="user-details">
+                    
+                  <div class="input-box">
+                    <span class="details">Product Name</span>
+                    <select class="select" name="pname">
+                        <option value="Tomato/தக்காளி">Tomato/தக்காளி</option>
+                        <option value="Potato/உருளைக்கிழங்கு">Potato/உருளைக்கிழங்கு</option>
+                        <option value="Onion/வெங்காயம்">Onion/வெங்காயம்</option>
+                        <option value="Drumstick/முருங்கைக்காய்">Drumstick/முருங்கைக்காய்</option>
+                        <option value="Radish/முள்ளங்கி">Radish/முள்ளங்கி</option>
+                        <option value="Raw Mango/மாங்காய்">Raw Mango/மாங்காய்</option>
+                        <option value="Cabbage/முட்டைக்கோஸ்">Cabbage/முட்டைக்கோஸ்</option>
+                        <option value="Green Chilli/பச்சை மிளகாய்">Green Chilli/பச்சை மிளகாய்</option>
+                        <option value="Red Chilli/சிவப்பு மிளகாய்">Red Chilli/சிவப்பு மிளகாய்</option>
+                        <option value="Bumpkin/பூசணிக்காய்">Bumpkin/பூசணிக்காய்</option>
+                        <option value="Beetroot/பீட்ரூட்">Beetroot/பீட்ரூட்</option>
+                        <option value="Coriander/கொத்தமல்லி">Coriander/கொத்தமல்லி</option>
+                        <option value="CurryLeaves/கறிவேப்பிலை">CurryLeaves/கறிவேப்பிலை</option>
+                        <option value="Ladies Finger/வெண்டைக்காய்">Ladies Finger/வெண்டைக்காய்</option>
+                        <option value="Coconut/தேங்காய்">Coconut/தேங்காய்</option>
+                        <option value="Brinjal/கத்தரிக்காய்">Brinjal/கத்தரிக்காய்</option>
+                        <option value="Bitter Gourd/பாகற்காய்">Bitter Gourd/பாகற்காய்</option>
+                        <option value="Cucumber/வெள்ளரிக்காய்">Cucumber/வெள்ளரிக்காய்</option>
+                        <option value="Black Gram/உளுந்து">Black Gram/உளுந்து</option>
+                        <option value="Chickpea/கொண்டைக்கடலை">Chickpea/கொண்டைக்கடலை</option>
+                        <option value="Beans/ பீன்ஸ்">Beans/ பீன்ஸ்</option>
+                        <option value="Onion Small/சின்ன வெங்காயம்">Onion Small/சின்ன வெங்காயம்</option>
+                        <option value="Raw Banana/வாழைக்காய்">Raw Banana/வாழைக்காய்</option>
+                        <option value="Rice/அரிசி">Rice/அரிசி </option>
+                    </select>
+                  </div>
+                  <div class="input-box">
+                    <span class="details">Price per kg</span>
+                    <input type="text" name="pprice" placeholder="Enter product's price" required>
+                  </div>
+                  <div class="input-box">
+                    <span class="details">Grade</span>
+                    <select class="select" name="pgrade">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                  </div>
+                  <div class="input-box">
+                    <span class="details">Product Quantity(in kg)</span>
+                    <input type="text" name="pq" placeholder="Enter Product Quantity" required>
+                  </div>
+                  <div class="button">
+                    <input type="submit" value="Upload">
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

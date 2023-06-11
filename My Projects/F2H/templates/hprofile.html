@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        * {
+          box-sizing: border-box;
+        }
+        body {
+          margin: 0;
+          padding: 0;
+          background-color: #f2f2f2;
+          font-family: Arial, sans-serif;
+        }
+        .profile-box {
+          max-width: 800px;
+          margin: 50px auto;
+          padding: 20px;
+          background-color: #ffffff;
+          border: 1px solid #e6e6e6;
+          border-radius: 10px;
+          text-align: center;
+        }
+        .profile-box h1 {
+          font-size: 24px;
+          margin-top: 0;
+        }
+        .profile-box p {
+          font-size: 18px;
+          margin: 10px 0;
+        }
+        .profile-box label {
+          display: inline-block;
+          width: 150px;
+          font-weight: bold;
+        }
+        .profile-box ul {
+          list-style: none;
+          padding: 0;
+        }
+        .profile-box li {
+          margin-bottom: 10px;
+          text-align: left;
+        }
+        .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .outer{
+        padding: 20px;
+        text-align: center;
+        width: 1000px;
+        margin: 8% auto 0 auto;
+		display: flex;
+		justify-content: center;
+        }
+
+        .hidden{
+            opacity: 0;
+        }
+        .form {
+            border-radius: 10px;
+            padding: 20px;
+			height: 550px;
+			overflow: auto;
+			box-shadow: 0px 0px 10px #888888;
+			width: 200px;
+			flex-basis: 45%;
+			background-color: #fff;
+			text-align: center;
+		}
+
+		input[type="text"], input[type="password"] ,input[type="email"] ,input[type="tel"]{
+			border-radius: 5px;
+			border: 1px solid #CCCCCC;
+			box-sizing: border-box;
+			font-size: 14px;
+			margin-bottom: 20px;
+			padding: 10px;
+			width: 100%;
+			border-left: 0;
+      border-top: 0;
+      border-right: 0;
+      border-bottom: 1px solid #999;
+      background: transparent;
+			color:#9dff00;
+			font-weight: 600;
+		}
+
+		input[type="submit"] {
+			background-color: #9dff00;
+			border: none;
+			border-radius: 5px;
+			font-weight: 700;
+			color: #140000;
+			cursor: pointer;
+			font-size: 16px;
+			padding: 10px;
+			width: 100%;
+		}
+      </style>
+</head>
+<body>
+    <section id="header">
+        <a href="/hhome" id="logolink"><div id="logo">F2H</div></a>
+        <div id="nav">
+            <ul id="navbar">
+                <li class="fhomenav"><a  href="/hhome">Home</a></li>
+                <li class="hshopnav"><a  href="/hshop">Shop</a></li>
+                <li class="hordersnav"><a  href="/horder">My Orders</a></li>
+                <li class="hpronav"><a class="active" href="/hprofile">Profile</a></li>
+                <li class="flogout"><a href="/hlogout">Logout</a></li>
+            </ul>
+        </div>
+    </section>
+    <section style="height: 44em; ">
+        <div class="profile-box">
+            <h1>Profile</h1>
+            <ul>
+              <li>
+                <label>Name:</label>
+                <span>{{name}}</span>
+              </li>
+              <li>
+                <label>Email:</label>
+                <span>{{email}}</span>
+              </li>
+              <li>
+                <label>Location:</label>
+                <span>{{loc}}</span>
+              </li>
+              <li>
+                <label>Phone:</label>
+                <span>{{ph}}</span>
+              </li>
+              <li>
+                <label>Address:</label>
+                <span>{{add}}</span>
+              </li>
+            </ul>
+            <br><br>
+            <div>
+                <span>click here to update your profile</span><br>
+                <button id="edit">Edit Profile</button>
+            </div>
+        </div>
+        <div class="modal">
+            <div class='outer hidden'>
+                <form action="/hedit" method="post" class="form">
+                    <label for="hostel-name">Name</label>
+                    <input type="text" id="hostel-name" name="hname" value="{{name}}" required>
+
+                    <label for="hostel-email">Email</label>
+                    <input type="email" id="hostel-email" name="hmail" value="{{email}}" required>
+
+                    <label for="hostel-phno">Mobile Number</label>
+                    <input type="tel" id="hostel-phone" name="hphone" value="{{ph}}" min="1000000000" max="9999999999" required>
+
+                    <label for="hostel-location">Location</label>
+                    <input type="text" id="hostel-location" name="hloc" value="{{loc}}" required>
+
+                    <label for="hostel-address">Address</label>
+                    <input type="text" id="hostel-address" name="hadd" value="{{add}}" required>
+                   
+                    <input type="submit" value="Update Profile">
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.querySelector('#edit').addEventListener("click",function() {
+        document.querySelector('.outer').classList.toggle('hidden')
+        
+        document.querySelector('.modal').style.display='block';
+        }
+        )
+    </script>
+</body>
+</html>
