@@ -48,6 +48,7 @@ bool game::setX(int row,int col){
         return 1;
     }
     else{
+        cout << "The position is already taken,Please enter a new position for 'X' \n";
         return 0;
     }
 }
@@ -58,6 +59,7 @@ bool game::setO(int row,int col){
         return 1;
     }
     else{
+        cout << "The position is already taken,Please enter a new position for 'X' \n";
         return 0;
     }
 }
