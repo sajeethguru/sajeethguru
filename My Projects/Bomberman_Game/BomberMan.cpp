@@ -1,5 +1,8 @@
 #include<iostream>
+#include<conio.h>
 #include<vector>
+#include<cstdlib>
+#include<time.h>
 
 class BomberMan{
     int size;
@@ -11,7 +14,6 @@ class BomberMan{
     std::vector<std::vector<int>> brickPos;
     std::vector<std::vector<char>> field;
     int bomb[2];
-
     public:
         BomberMan();
         bool play();
@@ -19,6 +21,7 @@ class BomberMan{
         void printField();
         int detonate();
         void instruction();
+        int villainMove(int,int,int);
 };      
 
 void BomberMan::instruction(){
@@ -148,6 +151,7 @@ BomberMan::BomberMan(){
     }
 }
 
+
 int BomberMan::move(int i,int j){
     if(field[i][j] == '*' || field[i][j] =='B' || field[i][j] == '+'){
         return 3;
@@ -183,6 +187,15 @@ int BomberMan::detonate(){
                 val = 0;
             }
             else{
+                if(field[i][j] == 'V'){
+                    for(auto k=villainPos.begin();k != villainPos.end();k++){
+                        std::vector<int> l = *k;
+                        if(l[0] == i && l[1] == j){
+                            villainPos.erase(k);
+                            villain--;
+                        }
+                    }
+                }
                 field[i][j] = ' ';
             }
         }
@@ -190,107 +203,144 @@ int BomberMan::detonate(){
     bomb[0] = 0;
     bomb[1] = 0;
     std::cout << "Bomb is Detonated!\n";
+    printField();
     return val;
 }
 
 bool BomberMan::play(){
-    char a;
     int val,currentPos[2];
     while(true){
-        std::cin >> a;
         currentPos[0] = player[0];
         currentPos[1] = player[1];
-
-        switch(a){
-            case 'w':
-                val = move(player[0]-1,player[1]);
-                break;
-            case 'a':
-                val = move(player[0],player[1]-1);
-                break;
-            case 's':
-                val = move(player[0]+1,player[1]);
-                break;
-            case 'd':
-                val = move(player[0],player[1]+1);
-                break;
-            case 'q':
-                val = move(player[0]-1,player[1]-1);
-                break;
-            case 'e':
-                val = move(player[0]-1,player[1]+1);
-                break;
-            case 'z':
-                val = move(player[0]+1,player[1]-1);
-                break;
-            case 'c':
-                val = move(player[0]+1,player[1]+1);
-                break;
-            case 'b':
-                if(bomb[0] == 0){
-                    bomb[0] = currentPos[0];
-                    bomb[1] = currentPos[1];
-                    std::cout << "Bomb is Successfully Planted in " << char(bomb[0] + int('@')) << char(bomb[0] + int('@')) << "\n";
-                    val = 3;
-                }
-                else if(bomb == currentPos){
-                    char choice;
-                    std::cout << "A Bomb is already Placed in " << bomb << "\nDo you Want to remove the bomb(y/n): ";
-                    std::cin >>choice;
-                    if(choice == 'y'){
-                        bomb[0] = 0;
-                        bomb[1] = 0;
-                    }
-                    std::cout << "Bomb is Removed\n";
-                    val = 3;
-                }
-                else{
-                    char choice;
-                    std::cout << "A Bomb is already Placed in " << bomb << "\nDo you Want to detonate the bomb(y/n): ";
-                    std::cin >>choice;
-                    if(choice == 'y'){
-                        val = detonate();
-                    }
-                    else{
+        if(kbhit()){
+            switch(getch()){
+                case 'w':case 'W':case 075:
+                    val = move(player[0]-1,player[1]);
+                    break;
+                case 'a':case 'A':case 072:
+                    val = move(player[0],player[1]-1);
+                    break;
+                case 's':case 'S':
+                    val = move(player[0]+1,player[1]);
+                    break;
+                case 'd':case 'D':case 077:
+                    val = move(player[0],player[1]+1);
+                    break;
+                case 'q':case 'Q':
+                    val = move(player[0]-1,player[1]-1);
+                    break;
+                case 'e':case 'E':
+                    val = move(player[0]-1,player[1]+1);
+                    break;
+                case 'z':case 'Z':
+                    val = move(player[0]+1,player[1]-1);
+                    break;
+                case 'c':case 'C':
+                    val = move(player[0]+1,player[1]+1);
+                    break;
+                case 'b':case 'B':
+                    if(bomb[0] == 0){
+                        bomb[0] = currentPos[0];
+                        bomb[1] = currentPos[1];
+                        std::cout << "Bomb is Successfully Planted in " << char(bomb[0] + int('@')) << char(bomb[0] + int('@')) << "\n";
                         val = 3;
                     }
-                }
-                
-                break;
-            case 'x':
-                if(bomb[0] == 0){
-                    std::cout << "No Bomb is Placed\n";
-                }
-                else{
-                    val = detonate();
-                }
-                break;
-            case 'h':
-                instruction();
-                val = 3;
-                break;
-        } 
-        if(val == 1){
-            field[currentPos[0]][currentPos[1]] = ' ';
-            printField();
-        }
-        else if(val == 0){
-            field[currentPos[0]][currentPos[1]] = ' ';
-            printField();
-            return 0;
-        }
-        else if(val == 2){
-            field[currentPos[0]][currentPos[1]] = ' ';
-            printField();
-            return 1;
+                    else if(bomb == currentPos){
+                        char choice;
+                        std::cout << "A Bomb is already Placed in " << bomb << "\nDo you Want to remove the bomb(y/n): ";
+                        std::cin >>choice;
+                        if(choice == 'y'){
+                            bomb[0] = 0;
+                            bomb[1] = 0;
+                        }
+                        std::cout << "Bomb is Removed\n";
+                        val = 3;
+                    }
+                    else{
+                        char choice;
+                        std::cout << "A Bomb is already Placed in " << bomb << "\nDo you Want to detonate the bomb(y/n): ";
+                        std::cin >>choice;
+                        if(choice == 'y'){
+                            val = detonate();
+                        }
+                        else{
+                            val = 3;
+                        }
+                    }
+                    break;
+                case 'x':
+                    if(bomb[0] == 0){
+                        std::cout << "No Bomb is Placed\n";
+                        val = 3;
+                    }
+                    else{
+                        val = detonate();
+                    }
+                    break;
+                case 'h':
+                    instruction();
+                    val = 3;
+                    break;
+            }
+            if(val == 1){
+                field[currentPos[0]][currentPos[1]] = ' ';
+                printField();
+            }
+            else if(val == 0){
+                field[currentPos[0]][currentPos[1]] = ' ';
+                printField();
+                return 0;
+            }
+            else if(val == 2){
+                field[currentPos[0]][currentPos[1]] = ' ';
+                printField();
+                return 1;
+            }
+            else{
+                continue;
+            }
         }
         else{
-            continue;
+            srand((unsigned) time(NULL));
+            int i = rand() % villain;
+            val = villainMove(i,villainPos[i][0],villainPos[i][1]);
+            if(val == 0){
+                printField();
+                return 0;
+            }
+            printField();
+            for(long long i = 0;i<101000000;i++);
+            
         }
     }
 }
 
+int BomberMan::villainMove(int index,int i,int j){
+    int a = i,b = j;
+    field[i][j] = ' ';
+        srand((unsigned) time(NULL));
+        a += rand() % 3 - 1;
+        b += rand() % 3 - 1;
+        if(field[a][b] == ' '){
+            villainPos[index][0] = a;
+            villainPos[index][1] = b;
+            field[a][b] = 'V';
+            return 3;
+        }
+        else if(field[a][b] == 'P'){
+            field[a][b] = 'V';
+            villainPos[index][0] = a;
+            villainPos[index][1] = b;
+            return 0;
+        }
+        else{
+            field[i][j] = 'V';
+        }
+    
+}
+
 void BomberMan::printField(){
+    system("cls");
     for(int i=0;i< size;i++){
         for(int j=0;j<size;j++){
             std::cout << field[i][j] << " ";
@@ -317,3 +367,4 @@ int main(){
     }
     return 0;
 }
+
